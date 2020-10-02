@@ -1,0 +1,34 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# MySQLimport
+
+<!-- badges: start -->
+
+[![R build
+status](https://github.com/albersonmiranda/MySQLimport/workflows/R-CMD-check/badge.svg)](https://github.com/albersonmiranda/MySQLimport/actions)
+[![Codecov test
+coverage](https://codecov.io/gh/albersonmiranda/MySQLimport/branch/master/graph/badge.svg)](https://codecov.io/gh/albersonmiranda/MySQLimport?branch=master)
+<!-- badges: end -->
+
+O objetivo desse pacote é automatizar o processo de importação de
+arquivos para um banco de dados MySQL local.
+
+## Installation
+
+You can install the the development version from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("devtools")
+devtools::install_github("albersonmiranda/MySQLimport")
+```
+
+## Example
+
+This is a basic example which shows you how to solve a common problem:
+
+``` r
+#library(MySQLimport)
+## basic example code
+```
