@@ -20,3 +20,8 @@ Suggests:
     testthat,
     spelling
 Language: pt-BR
+Imports: 
+    DBI,
+    RMySQL,
+    readr,
+    rstudioapi

@@ -1,3 +1,7 @@
 # MySQLimport 0.0.0.9000
 
-* Added a `NEWS.md` file to track changes to the package.
+* Versão inicial do pacote.
+
+## FUNCIONALIDADES
+
+* Importar tabela BC (impedimentos) da GBR para o R e MySQL.

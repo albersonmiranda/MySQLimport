@@ -14,21 +14,29 @@ coverage](https://codecov.io/gh/albersonmiranda/MySQLimport/branch/master/graph/
 O objetivo desse pacote é automatizar o processo de importação de
 arquivos para um banco de dados MySQL local.
 
-## Installation
+## INSTALAÇÃO
 
-You can install the the development version from
-[GitHub](https://github.com/) with:
+Você pode instalar a partir do deste repositório com:
 
 ``` r
 # install.packages("devtools")
 devtools::install_github("albersonmiranda/MySQLimport")
 ```
 
-## Example
+## EXEMPLO
 
-This is a basic example which shows you how to solve a common problem:
+Esse é um exemplo básico para mostrar como importar a tabela BC da GBR:
 
 ``` r
-#library(MySQLimport)
-## basic example code
+
+library(MySQLimport)
+
+# Importar para o R:
+# data = import_BC("C:\\Arquivos\\GBR\\202009.txt")
+
+# Importar para o MySQL:
+# import_BC("C:\\Arquivos\\GBR\\202009.txt", MySQL = TRUE)
+
+# Se nao quiser sobrescrever a tabela:
+# import_BC("C:\\Arquivos\\GBR\\202009.txt", MySQL = TRUE, tabela = "202009")
 ```
