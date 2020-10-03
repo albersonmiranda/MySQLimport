@@ -10,11 +10,11 @@
 #' @param schema String. Se MySQL = TRUE, o nome do schema que contera a tabela
 #'   BC no MySQL. O schema deve existir no MySQL antes de executar a funcao.
 #' @param tabela String. Se MySQL = TRUE, o nome da tabela a ser criada no
-#'   servidor que contera a os dados importados.
+#'   servidor que contera os dados importados.
 #'
 #' @details Se for importar apenas para o R, lembre-se de nomear um objeto para
 #'   o resultado da funcao. Caso for importar para o MySQL, nao e necessario
-#'   criar um objeto. Note que a tabela será sobrescrita se ja existir.
+#'   criar um objeto. Note que a tabela sera sobrescrita se ja existir.
 #'
 #' @examples
 #' \dontrun{
@@ -31,7 +31,7 @@
 
 import_BC = function (caminho, MySQL = FALSE, schema = "GBR", tabela = "BC") {
 
-  # conexão com MySQL
+  # conexao com MySQL
   if (MySQL == TRUE) {
 
     tryCatch({
@@ -43,7 +43,7 @@ import_BC = function (caminho, MySQL = FALSE, schema = "GBR", tabela = "BC") {
       )},
       error = function (cond) {
         message(cond)
-        stop(paste("Talvez você não tenha criado o schema", schema, "no MySQL?"))
+        stop(paste("Talvez voce nao tenha criado o schema", schema, "no MySQL?"))
       })
   }
 

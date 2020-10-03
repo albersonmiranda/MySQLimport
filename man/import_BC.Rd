@@ -16,7 +16,7 @@ extensao (.txt).}
 BC no MySQL. O schema deve existir no MySQL antes de executar a funcao.}
 
 \item{tabela}{String. Se MySQL = TRUE, o nome da tabela a ser criada no
-servidor que contera a os dados importados.}
+servidor que contera os dados importados.}
 }
 \description{
 Importa o arquivo BC de impedimentos da GBR para o R ou para o MySQL.
@@ -24,7 +24,7 @@ Importa o arquivo BC de impedimentos da GBR para o R ou para o MySQL.
 \details{
 Se for importar apenas para o R, lembre-se de nomear um objeto para
 o resultado da funcao. Caso for importar para o MySQL, nao e necessario
-criar um objeto. Note que a tabela será sobrescrita se ja existir.
+criar um objeto. Note que a tabela sera sobrescrita se ja existir.
 }
 \examples{
 \dontrun{
