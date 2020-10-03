@@ -1,6 +1,6 @@
 Package: MySQLimport
 Title: Importar arquivos do Banestes SA para um banco de dados MySQL
-Version: 0.0.0.9001
+Version: 0.0.1
 Authors@R: 
     person(given = "Alberson",
            family = "Miranda",

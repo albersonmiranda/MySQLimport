@@ -1,4 +1,4 @@
-# MySQLimport (development version)
+# MySQLimport 0.0.1
 
 * Importar tabela GCO para o R e MySQL.
 
