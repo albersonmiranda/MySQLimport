@@ -7,8 +7,6 @@
 
 [![R build
 status](https://github.com/albersonmiranda/MySQLimport/workflows/R-CMD-check/badge.svg)](https://github.com/albersonmiranda/MySQLimport/actions)
-[![Codecov test
-coverage](https://codecov.io/gh/albersonmiranda/MySQLimport/branch/master/graph/badge.svg)](https://codecov.io/gh/albersonmiranda/MySQLimport?branch=master)
 <!-- badges: end -->
 
 O objetivo desse pacote é automatizar o processo de importação de

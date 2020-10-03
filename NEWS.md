@@ -1,6 +1,6 @@
 # MySQLimport (development version)
 
-* Adicionado teste para função BC.
+* Importar tabela GCO para o R e MySQL.
 
 # MySQLimport 0.0.0.9000
 
