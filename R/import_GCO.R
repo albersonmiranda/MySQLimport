@@ -1,6 +1,6 @@
-#' Importar arquivo de impedimentos da GBR
+#' Importar arquivo de contratos de credito do sistema GCO
 #'
-#' Importa o arquivo BC de impedimentos da GBR para o R ou para o MySQL.
+#' Importa o arquivo GCOA53 para o R ou para o MySQL.
 #'
 #' @export
 #'
@@ -22,9 +22,7 @@
 #' data = import_GCO("C:\\Arquivos\\GCO\\202009.txt")
 #'
 #' # para importar para o MySQL:
-#' import_GCO("C:\\Arquivos\\GCO\\202009.txt", MySQL = TRUE)
-#' # ou se nao quiser sobrescrever a tabela:
-#' import_BC("C:\\Arquivos\\GCO\\202009.txt", MySQL = TRUE, tabela = "202009")
+#' import_GCO("C:\\Arquivos\\GCO\\202009.txt", MySQL = TRUE, tabela = "t202009")
 #' }
 #'
 

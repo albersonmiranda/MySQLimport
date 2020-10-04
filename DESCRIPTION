@@ -15,10 +15,12 @@ Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.1
 URL: https://github.com/albersonmiranda/MySQLimport
 BugReports: https://github.com/albersonmiranda/MySQLimport/issues
-Suggests: 
 Language: pt-BR
 Imports: 
     DBI,
     RMySQL,
     readr,
-    rstudioapi
+    rstudioapi,
+    data.table,
+    tibble,
+    xml2

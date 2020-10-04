@@ -2,3 +2,5 @@
 
 export(import_BC)
 export(import_GCO)
+export(import_SCR)
+import(data.table)
