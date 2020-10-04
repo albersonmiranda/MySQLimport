@@ -97,7 +97,7 @@ import_SCR = function (caminho, MySQL = FALSE, schema = "SCR", tabela) {
     out[rowSums(is.na(out)) < length(out) - 1L, ..out_nms]
   }
 
-  xml_ls = as_list(xml2::xml_find_all(xml, xpath = "//Cli"))
+  xml_ls = xml2::as_list(xml2::xml_find_all(xml, xpath = "//Cli"))
   index = seq_len(length(xml_ls))
   tasks = split(index, (index - 1L) %/% 50000L)
   data = tibble::as_tibble(rbindlist(lapply(tasks, function(task) recur_unpack_attrs(xml_ls[task])), fill = TRUE))
