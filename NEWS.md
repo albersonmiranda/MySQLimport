@@ -1,3 +1,7 @@
+# MySQLimport 0.0.3
+
+* Adicionada send_MySQL para envio de objetos R para o MySQL.
+
 # MySQLimport 0.0.2
 
 * Adicionada import_SCR para importação do documento 3046 do Bacen para o R e MySQL.
