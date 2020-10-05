@@ -11,7 +11,7 @@
 #'   extensao (.txt).
 #' @param MySQL Logical. Se TRUE, entao o arquivo sera importado para o MySQL.
 #' @param schema String. Se MySQL = TRUE, o nome do schema que contera a tabela
-#'   GCO no MySQL. O schema deve existir no MySQL antes de executar a funcao.
+#'   SCR no MySQL. O schema deve existir no MySQL antes de executar a funcao.
 #' @param tabela String. Se MySQL = TRUE, o nome da tabela a ser criada no
 #'   servidor que contera os dados importados.
 #'
