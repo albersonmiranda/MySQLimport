@@ -60,7 +60,7 @@ import_GCO = function (caminho, MySQL = FALSE, schema = "GCO", tabela) {
         30, 13, 1, 1, 2, 8, 20, 2, 1, 1, 13, 11, 2, 2, 2, 2, 17, 9, 1, 4, 1,
         2, 2, 2),
       c("processamento", "produto", "subproduto", "contrato", "clientegco",
-        "sitema", "agencia", "efetivacao", "vencimento", "saldodevedor",
+        "sistema", "agencia", "efetivacao", "vencimento", "saldodevedor",
         "saldocontabil", "saldopdd", "diasatraso", "adiantamento",
         "classorigem", "class", "classinformada", "classfinal", "grupocontabil",
         "diasprazo", "cpfcnpj", "nome", "vlrutilizadopdd", "prejuizo",
