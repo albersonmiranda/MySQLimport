@@ -97,7 +97,21 @@ import_GCO = function (caminho, MySQL = FALSE, schema = "GCO", tabela) {
   if (MySQL == TRUE) {
 
     DBI::dbSendQuery(con, paste("DROP TABLE IF EXISTS", tabela))
+
     DBI::dbWriteTable(con, DBI::SQL(tabela), data)
+
+    DBI::dbSendQuery(con, "
+    ALTER TABLE `gco`.`t202009`
+    ADD INDEX idx_contrato (contrato(20)),
+    ADD INDEX idx_prejuizo (prejuizo(1)),
+    ADD INDEX idx_cpfcnpj (cpfcnpj(14)),
+    ADD INDEX idx_agencia (agencia(4)),
+    ADD INDEX idx_produto (produto(4)),
+    ADD INDEX idx_subproduto (subproduto(4)),
+    ADD INDEX idx_tipocli (tipocli(1)),
+    ADD INDEX idx_procjud (procjud(1)),
+    ADD INDEX idx_diasatraso (diasatraso);
+    ")
 
     # desconectando
     DBI::dbDisconnect(con)
