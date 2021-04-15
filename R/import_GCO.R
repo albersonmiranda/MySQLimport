@@ -100,8 +100,8 @@ import_GCO = function (caminho, MySQL = FALSE, schema = "GCO", tabela) {
 
     DBI::dbWriteTable(con, DBI::SQL(tabela), data)
 
-    DBI::dbSendQuery(con, "
-    ALTER TABLE `gco`.`t202009`
+    DBI::dbSendQuery(con, paste0("
+    ALTER TABLE `gco`.`", tabela, "`
     ADD INDEX idx_contrato (contrato(20)),
     ADD INDEX idx_prejuizo (prejuizo(1)),
     ADD INDEX idx_cpfcnpj (cpfcnpj(14)),
@@ -111,7 +111,7 @@ import_GCO = function (caminho, MySQL = FALSE, schema = "GCO", tabela) {
     ADD INDEX idx_tipocli (tipocli(1)),
     ADD INDEX idx_procjud (procjud(1)),
     ADD INDEX idx_diasatraso (diasatraso);
-    ")
+    "))
 
     # desconectando
     DBI::dbDisconnect(con)

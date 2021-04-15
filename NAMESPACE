@@ -3,5 +3,6 @@
 export(import_BC)
 export(import_GCO)
 export(import_SCR)
+export(import_mg5)
 export(send_MySQL)
 import(data.table)
