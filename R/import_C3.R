@@ -6,7 +6,7 @@
 #'
 #' @param caminho String. O caminho do arquivo a ser importado, incluindo a
 #'   extensao (.txt).
-#' @param MySQL Logical. Se TRUE, entao o arquivo sera importado para o MySQL.
+#' @param mysql Logical. Se TRUE, entao o arquivo sera importado para o MySQL.
 #' @param schema String. Se MySQL = TRUE, o nome do schema que conterá a tabela
 #'   MG5 no MySQL. O schema deve existir no MySQL antes de executar a funcao.
 #' @param tabela String. Se MySQL = TRUE, o nome da tabela a ser criada no
@@ -26,7 +26,7 @@
 #' import_c3("C:\\Arquivos\\C3\\202009.txt", MySQL = TRUE, tabela = "t202009")
 #' }
 #'
-import_c3 <- function(caminho, mysql = FALSE, schema = "c5", tabela) {
+import_c3 <- function(caminho, mysql = FALSE, schema = "c3", tabela) {
 
     # evaluate args
     if (mysql == TRUE && is.null(tabela)) {
@@ -35,8 +35,7 @@ import_c3 <- function(caminho, mysql = FALSE, schema = "c5", tabela) {
 
     # conexao com MySQL
     if (mysql == TRUE) {
-        tryCatch(
-            {
+        tryCatch({
                 con <- DBI::dbConnect(
                     RMySQL::MySQL(),
                     host = "localhost",
@@ -59,58 +58,49 @@ import_c3 <- function(caminho, mysql = FALSE, schema = "c5", tabela) {
     }
 
     # importar arquivo para o R
-    data <- readr::read_fwf(
+    data <- readr::read_csv2(
         caminho,
-        readr::fwf_widths(
-            c(
-                4, 1, 14, 100, 4, 7, 1, 15, 2, 2, 2, 4, 4, 2,
-                rep(4, 30),
-                9,
-                rep(c(2, 9, 6, 6, 1), 20),
-                rep(c(2, 3, 3), 3),
-                8, 1, 4, 1, 4, 15, 3, 1, 15, 1, 15, 9, 1
-            ),
-            c(
-                "agencia", "tp_cli", "cpf_cnpj", "nome", "ano_pn",
-                "numero_pn", "status", "valor_pn", "class_pn",
-                "class_cliente", "class_garantia", "produto",
-                "subproduto", "competencia",
-                sapply(1:30, function(x) paste0("exc", x)),
-                "proponente",
-                unlist(lapply(1:20, function(x) {
-                    c(
-                        paste0("alcada", x),
-                        paste0("mat_alc", x),
-                        paste0("data", x),
-                        paste0("hora", x),
-                        paste0("voto", x)
-                    )
-                })),
-                unlist(lapply(1:3, function(x) {
-                    c(
-                        paste0("bem", x),
-                        paste0("garantia", x),
-                        paste0("per_garantia", x)
-                    )
-                })),
-                "taxa", "per_taxa", "prazo", "per_prazo", "indice",
-                "desc_indice", "per_indice", "origem_pn", "desc_origem_pn",
-                "tp_inclusao_pn", "mat_angariador", "tp_tx_aceita"
-            ),
-            col_types = readr::cols(
-                agencia = readr::col_character(),
-                cpf_cnpj = readr::col_character(),
-                ano_pn = readr::col_character(),
-                numero_pn = readr::col_character(),
-                produto = readr::col_character(),
-                subproduto = readr::col_character()
-            )
+        col_names = c(
+            "agencia", "tp_cli", "cpf_cnpj", "nome", "ano_pn",
+            "numero_pn", "status", "valor_pn", "class_pn",
+            "class_cliente", "class_garantia", "produto",
+            "subproduto", "competencia",
+            sapply(1:30, function(x) paste0("exc", x)),
+            "proponente",
+            unlist(lapply(1:20, function(x) {
+                c(
+                    paste0("alcada", x),
+                    paste0("mat_alc", x),
+                    paste0("data", x),
+                    paste0("hora", x),
+                    paste0("voto", x)
+                )
+            })),
+            unlist(lapply(1:3, function(x) {
+                c(
+                    paste0("bem", x),
+                    paste0("garantia", x),
+                    paste0("per_garantia", x)
+                )
+            })),
+            "taxa", "per_taxa", "prazo", "per_prazo", "indice",
+            "desc_indice", "per_indice", "origem_pn", "desc_origem_pn",
+            "tp_inclusao_pn", "desc_tp_inclusao_pn", "mat_angariador",
+            "tp_tx_aceita"
+        ),
+        col_types = readr::cols(
+            agencia = readr::col_character(),
+            cpf_cnpj = readr::col_character(),
+            ano_pn = readr::col_character(),
+            numero_pn = readr::col_character(),
+            produto = readr::col_character(),
+            subproduto = readr::col_character()
         )
     )
 
     # criar tabela no MySQL
 
-    if (MySQL == TRUE) {
+    if (mysql == TRUE) {
         DBI::dbSendQuery(con, paste("DROP TABLE IF EXISTS", tabela))
 
         DBI::dbWriteTable(con, DBI::SQL(tabela), data)

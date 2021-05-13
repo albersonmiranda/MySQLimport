@@ -4,19 +4,19 @@
 \alias{import_c3}
 \title{Importar arquivo de PNs da gestão de crédito}
 \usage{
-import_c3(caminho, mysql = FALSE, schema = "c5", tabela)
+import_c3(caminho, mysql = FALSE, schema = "c3", tabela)
 }
 \arguments{
 \item{caminho}{String. O caminho do arquivo a ser importado, incluindo a
 extensao (.txt).}
+
+\item{mysql}{Logical. Se TRUE, entao o arquivo sera importado para o MySQL.}
 
 \item{schema}{String. Se MySQL = TRUE, o nome do schema que conterá a tabela
 MG5 no MySQL. O schema deve existir no MySQL antes de executar a funcao.}
 
 \item{tabela}{String. Se MySQL = TRUE, o nome da tabela a ser criada no
 servidor que contera os dados importados.}
-
-\item{MySQL}{Logical. Se TRUE, entao o arquivo sera importado para o MySQL.}
 }
 \description{
 Importa o arquivo C3 para o R ou para o MySQL.
