@@ -94,7 +94,8 @@ import_c3 <- function(caminho, mysql = FALSE, schema = "c3", tabela) {
             ano_pn = readr::col_character(),
             numero_pn = readr::col_character(),
             produto = readr::col_character(),
-            subproduto = readr::col_character()
+            subproduto = readr::col_character(),
+            valor_pn = readr::col_double()
         )
     )
 
