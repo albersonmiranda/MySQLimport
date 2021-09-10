@@ -23,4 +23,5 @@ Imports:
     rstudioapi,
     data.table,
     tibble,
-    xml2
+    xml2,
+    vroom

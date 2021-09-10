@@ -2,9 +2,9 @@
 
 export(import_BC)
 export(import_BG)
-export(import_GCO)
 export(import_SCR)
 export(import_c3)
+export(import_gco)
 export(import_got)
 export(import_mg5)
 export(send_MySQL)
