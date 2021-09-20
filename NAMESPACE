@@ -3,6 +3,7 @@
 export(import_BC)
 export(import_BG)
 export(import_SCR)
+export(import_arqtra)
 export(import_c3)
 export(import_gco)
 export(import_got)
