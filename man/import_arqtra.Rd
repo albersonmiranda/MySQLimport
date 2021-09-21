@@ -9,9 +9,12 @@ import_arqtra(
   mysql = FALSE,
   schema = "ARQTRA",
   tabela,
+  drop = FALSE,
   metodo = c("vroom", "readr"),
   host,
-  user
+  port,
+  user,
+  password = NULL
 )
 }
 \arguments{

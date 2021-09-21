@@ -34,10 +34,12 @@ import_arqtra = function(caminho,
                          mysql = FALSE,
                          schema = "ARQTRA",
                          tabela,
+                         drop = FALSE,
                          metodo = c("vroom", "readr"),
                          host,
                          port,
-                         user) {
+                         user,
+                         password = NULL) {
 
     # evaluate arg tabela
     if (mysql == TRUE && is.null(tabela)) {
@@ -66,7 +68,11 @@ import_arqtra = function(caminho,
                     port = port,
                     db = schema,
                     user = user,
-                    password = rstudioapi::askForPassword("Database password")
+                    password = ifelse(
+                        is.null(password),
+                        rstudioapi::askForPassword("Database password"),
+                        password
+                    )
                 )
             },
             error = function(cond) {
@@ -138,17 +144,25 @@ import_arqtra = function(caminho,
     # criar tabela no MySQL
     if (mysql == TRUE) {
 
-        # dropar tabela
-        DBI::dbSendQuery(con, paste("DROP TABLE IF EXISTS", tabela))
+        # sobrescrever tabela
+        if (drop == TRUE) {
 
-        # gravar tabela
-        DBI::dbWriteTable(con, DBI::SQL(tabela), data)
+            # dropar tabela
+            DBI::dbSendQuery(con, paste("DROP TABLE IF EXISTS", tabela))
+            # gravar tabela
+            DBI::dbWriteTable(con, DBI::SQL(tabela), data)
+            # gravar índices
+            DBI::dbSendQuery(con, paste0("
+            ALTER TABLE ", schema, ".", tabela, "
+            ADD INDEX idx_produto (produto(4));
+            "))
 
-        # gravar índices
-        DBI::dbSendQuery(con, paste0("
-    ALTER TABLE ", schema, ".", tabela, "
-    ADD INDEX idx_produto (produto(4));
-    "))
+        } else {
+
+            # append da tabela
+            DBI::dbWriteTable(con, DBI::SQL(tabela), data, append = TRUE)
+        }
+
 
         # desconectando
         DBI::dbDisconnect(con)
