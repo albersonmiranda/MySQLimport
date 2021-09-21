@@ -36,6 +36,7 @@ import_arqtra = function(caminho,
                          tabela,
                          metodo = c("vroom", "readr"),
                          host,
+                         port,
                          user) {
 
     # evaluate arg tabela
@@ -62,6 +63,7 @@ import_arqtra = function(caminho,
             {
                 con = DBI::dbConnect(RMySQL::MySQL(),
                     host = host,
+                    port = port,
                     db = schema,
                     user = user,
                     password = rstudioapi::askForPassword("Database password")
